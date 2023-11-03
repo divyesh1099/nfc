@@ -1,0 +1,126 @@
+{% extends 'home/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="parallax-container">
+  <div class="parallax"><img src="{% static 'images/hospital-hero.png' %}" alt="Hospital Exterior"></div>
+  <div class="center-align hero-title">
+    <h1 class="white-text text-lighten-2">Our Services</h1>
+  </div>
+</div>
+
+<!-- Services Section -->
+<section class="section container">
+  <div class="row">
+    
+    <!-- General Medicine -->
+    <div class="col s12 m4">
+      <div class="card medium hoverable">
+        <div class="card-image">
+          <img src="{% static 'images/general-medicine.png' %}" alt="General Medicine">
+        </div>
+        <div class="card-content">
+          <span class="card-title">General Medicine</span>
+          <p>Comprehensive care for a range of common illnesses and conditions.</p>
+        </div>
+        <div class="card-action">
+          <a href="#!">Learn more</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pediatrics -->
+    <div class="col s12 m4">
+      <div class="card medium hoverable">
+        <div class="card-image">
+          <img src="{% static 'images/pediatrics.png' %}" alt="Pediatrics">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Pediatrics</span>
+          <p>Specialized care for infants, children, and adolescents.</p>
+        </div>
+        <div class="card-action">
+          <a href="#!">Learn more</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Surgery -->
+    <div class="col s12 m4">
+      <div class="card medium hoverable">
+        <div class="card-image">
+          <img src="{% static 'images/surgery.png' %}" alt="Surgery">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Surgery</span>
+          <p>Advanced surgical procedures with state-of-the-art technology.</p>
+        </div>
+        <div class="card-action">
+          <a href="#!">Learn more</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Maternity -->
+    <div class="col s12 m4">
+      <div class="card medium hoverable">
+        <div class="card-image">
+          <img src="{% static 'images/maternity.png' %}" alt="Maternity">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Maternity</span>
+          <p>Compassionate care for mothers and babies from pregnancy to birth.</p>
+        </div>
+        <div class="card-action">
+          <a href="#!">Learn more</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Cardiology -->
+    <div class="col s12 m4">
+      <div class="card medium hoverable">
+        <div class="card-image">
+          <img src="{% static 'images/cardiology.png' %}" alt="Cardiology">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Cardiology</span>
+          <p>Expert heart care with a focus on preventative measures and treatments.</p>
+        </div>
+        <div class="card-action">
+          <a href="#!">Learn more</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Emergency Services -->
+    <div class="col s12 m4">
+      <div class="card medium hoverable">
+        <div class="card-image">
+          <img src="{% static 'images/emergency-services.png' %}" alt="Emergency Services">
+        </div>
+        <div class="card-content">
+          <span class="card-title">Emergency Services</span>
+          <p>24/7 emergency department ready to address urgent and life-threatening conditions.</p>
+        </div>
+        <div class="card-action">
+          <a href="#!">Learn more</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Parallax JavaScript for Materialize -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.parallax');
+    var instances = M.Parallax.init(elems);
+  });
+</script>
+
+{% endblock %}

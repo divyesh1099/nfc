@@ -1,0 +1,97 @@
+{% extends 'home/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <!-- Hero Image with Overlay Text -->
+    <div class="section">
+      <div class="parallax-container">
+        <div class="parallax">
+          <img src="{% static 'images/hospital.png' %}" alt="Hospital Information System">
+        </div>
+        <div class="section no-pad-bot" style="position: absolute; top: 50%; width:100%;">
+          <div class="container">
+            <h1 class="header center white-text text-lighten-2">Nandlal Family Clinic</h1>
+            <div class="row center">
+              <h5 class="header col s12 light">A sophisticated platform for healthcare excellence</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section with Card Panels -->
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Compliance and Security</span>
+              <p>Our system is designed with the highest security standards to comply with HIPAA and GDPR, featuring data encryption, secure transmission, and audit trails.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Innovative Technology</span>
+              <p>Using Django, we implement role-based access control, ensuring that sensitive data is accessible only to authorized personnel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Development Updates Section with Images -->
+    <div class="section">
+      <h4 class="center-align">Development Updates</h4>
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Speeds up Development</h5>
+            <p class="light">We resolved critical issues swiftly, such as ModuleNotFoundError and ImportError, by keeping our dependencies up-to-date.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">User-Centric Design</h5>
+            <p class="light">Our detailed Doctor model and user profiles are designed to be intuitive and user-friendly, enhancing the experience for all users.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Customization</h5>
+            <p class="light">We've customized models and permissions to meet the unique needs of the healthcare environment, ensuring flexibility and scalability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Looking Ahead Section with Parallax -->
+    <div class="parallax-container valign-wrapper">
+      <div class="section no-pad-bot">
+        <div class="container">
+          <div class="row center">
+            <h5 class="header col s12 light">Our commitment is to provide a secure and efficient hospital management experience.</h5>
+          </div>
+        </div>
+      </div>
+      <div class="parallax"><img src="{% static 'images/future-vision.png' %}" alt="Looking Ahead"></div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.parallax');
+        var instances = M.Parallax.init(elems);
+        });
+    </script>
+{% endblock %}

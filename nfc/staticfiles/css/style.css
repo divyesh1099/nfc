@@ -1,0 +1,89 @@
+/* Reset padding and margin to ensure consistency */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Bootstrap's default light background color */
+    color: #212529; /* Bootstrap's default text color for light theme */
+}
+
+/* Navbar custom styles */
+nav {
+    background-color: #fff; /* White background for a light theme */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.nav-wrapper {
+    padding: 0 20px; /* Consistent padding with Bootstrap's container */
+}
+
+.brand-logo {
+    font-weight: 500;
+    color: #007bff; /* Bootstrap primary color for brand logo */
+}
+
+/* Link styles */
+nav a {
+    color: #212529 !important; /* Bootstrap's default text color */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #007bff; /* Bootstrap primary color for hover state */
+    text-decoration: underline;
+}
+
+/* Active link style */
+nav .active {
+    font-weight: bold;
+}
+
+/* Sidenav styles */
+.sidenav {
+    background-color: #fff; /* Consistent with navbar background */
+}
+
+.sidenav a {
+    color: #212529; /* Consistent with navbar links */
+    text-decoration: none;
+}
+
+/* Sidenav trigger icon color */
+.sidenav-trigger i {
+    color: #007bff; /* Bootstrap primary color for the menu icon */
+}
+
+/* Main content container */
+.container {
+    padding-top: 20px; /* Space from navbar */
+    padding-bottom: 20px; /* Space above footer */
+}
+
+/* Footer styles */
+.page-footer {
+    background-color: #f8f9fa; /* Light background for footer */
+    color: #6c757d; /* Muted text color for footer */
+    padding: 10px 0; /* Padding for footer content */
+    border-top: 1px solid #dee2e6; /* Border top to separate from content */
+}
+
+.page-footer a {
+    color: #007bff; /* Bootstrap primary color for links */
+}
+
+.page-footer a:hover {
+    text-decoration: none;
+    color: #0056b3; /* Darker shade for hover effect */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .nav-wrapper {
+        padding: 0 15px; /* Adjust padding on smaller screens */
+    }
+}
