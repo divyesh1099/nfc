@@ -1,0 +1,239 @@
+{% extends 'home/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="section">
+        <div class="row">
+            <div class="col s12 m9">
+            <h1 class="header">Welcome to Our Hospital Information System</h1>
+            <h2 class="header light">Efficient. Reliable. Secure.</h2>
+            <p class="flow-text">Your health management is our top priority. Access your health records, manage appointments, and connect with your healthcare providers, all in one place.</p>
+            </div>
+            <div class="col s12 m3">
+            <img src="{% static 'images/patient.png' %}" alt="Patient Portal" class="responsive-img">
+            </div>
+        </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section">
+        <div class="row">
+            <!-- Feature 1: Appointment Scheduling -->
+            <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                <img src="{% static 'images/appointment.png' %}">
+                <span class="card-title">Appointment Scheduling</span>
+                </div>
+                <div class="card-content">
+                <p>Schedule and manage your appointments with our specialists anytime, anywhere with just a few clicks.</p>
+                </div>
+                <div class="card-action">
+                <a href="{% url 'appointment:schedule_appointment' %}">Schedule Now</a>
+                </div>
+            </div>
+            </div>
+
+            <!-- Feature 2: Medical Records Access -->
+            <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                <img src="{% static 'images/medical-history.png' %}">
+                <span class="card-title">Medical Records</span>
+                </div>
+                <div class="card-content">
+                <p>Get secure and instant access to your medical history and test results to stay informed about your health.</p>
+                </div>
+                <div class="card-action">
+                <a href="{% url 'patient:view_medical_records' %}">View Records</a>
+                </div>
+            </div>
+            </div>
+
+            <!-- Feature 3: Virtual Consultations -->
+            <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                <img src="{% static 'images/virtual_consultation.png' %}">
+                <span class="card-title">Virtual Consultations</span>
+                </div>
+                <div class="card-content">
+                <p>Consult with healthcare professionals from the comfort of your home through our virtual consultation services.</p>
+                </div>
+                <div class="card-action">
+                <a href="{% url 'consultation:virtual_consultation' %}">Start a Consultation</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="section">
+        <div class="row">
+            <div class="col s12">
+            <h3>Comprehensive Healthcare Services</h3>
+            <p class="flow-text">We are dedicated to providing a comprehensive range of healthcare services tailored to your needs.</p>
+            </div>
+            <!-- Additional services can be listed here -->
+            <!-- Example: Pharmacy -->
+            <div class="col s12 m4">
+            <h5>On-site Pharmacy</h5>
+            <p>Our on-site pharmacy allows you to easily fill prescriptions immediately following your appointment or through our online service.</p>
+            </div>
+            <!-- Example: Health Monitoring -->
+            <div class="col s12 m4">
+            <h5>Continuous Health Monitoring</h5>
+            <p>Enroll in our health monitoring program to keep track of your vital signs and receive proactive care from our team.</p>
+            </div>
+            <!-- Example: Wellness Programs -->
+            <div class="col s12 m4">
+            <h5>Wellness Programs</h5>
+            <p>Join our wellness programs designed to promote a healthy lifestyle and prevent disease through education and activities.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Parallax Section -->
+    <div class="parallax-container">
+        <div class="parallax">
+        <img src="{% static 'images/innovative-healthcare.png' %}" alt="Innovative Healthcare">
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="section grey lighten-3">
+        <div class="row">
+        <div class="col s12">
+            <h3 class="center-align">What Our Patients Say</h3>
+        </div>
+        <!-- Testimonial 1 -->
+        <div class="col s12 m4">
+            <div class="card-panel">
+            <i class="material-icons large">format_quote</i>
+            <p>"The staff was incredibly helpful and compassionate during my treatment. The virtual consultation option is a game-changer for me!"</p>
+            <p class="testimonial-author">- Alex Johnson</p>
+            </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="col s12 m4">
+            <div class="card-panel">
+            <i class="material-icons large">format_quote</i>
+            <p>"I was able to access my medical records online without any hassle. This is the kind of efficiency needed in healthcare."</p>
+            <p class="testimonial-author">- Maria Gonzalez</p>
+            </div>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="col s12 m4">
+            <div class="card-panel">
+            <i class="material-icons large">format_quote</i>
+            <p>"Booking appointments has never been easier. The user-friendly interface made the whole process stress-free."</p>
+            <p class="testimonial-author">- Sam Lee</p>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+    <!-- News Updates Section -->
+    <div class="section">
+        <div class="row">
+        <div class="col s12">
+            <h3 class="center-align">Latest News & Updates</h3>
+        </div>
+        <!-- News Item 1 -->
+        <div class="col s12 m6">
+            <div class="card horizontal">
+            <div class="card-image">
+                <img src="{% static 'images/news1.png' %}" alt="News Headline">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                <h4>New Wing Opening</h4>
+                <p>We're excited to announce the opening of our new wing dedicated to pediatric care, starting next month.</p>
+                </div>
+                <div class="card-action">
+                <a href="#">Read More</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- News Item 2 -->
+        <div class="col s12 m6">
+            <div class="card horizontal">
+            <div class="card-image">
+                <img src="{% static 'images/news2.png' %}" alt="News Headline">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                <h4>Cutting-edge Research</h4>
+                <p>Our researchers have made a breakthrough in cancer treatment that promises to improve patient outcomes significantly.</p>
+                </div>
+                <div class="card-action">
+                <a href="#">Read More</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    <!-- Health Tips Section -->
+    <div class="section grey lighten-3">
+        <div class="row">
+        <div class="col s12">
+            <h3 class="center-align">Health Tips</h3>
+        </div>
+        <!-- Health Tip 1 -->
+        <div class="col s12 m4">
+            <div class="card">
+            <div class="card-image">
+                <img src="{% static 'images/hydrated.png' %}" alt="Health Tip">
+            </div>
+            <div class="card-content">
+                <span class="card-title">Stay Hydrated</span>
+                <p>Drinking enough water is essential for maintaining a healthy metabolism and flushing toxins out of your body.</p>
+            </div>
+            </div>
+        </div>
+        <!-- Health Tip 2 -->
+        <div class="col s12 m4">
+            <div class="card">
+            <div class="card-image">
+                <img src="{% static 'images/exercise.png' %}" alt="Health Tip">
+            </div>
+            <div class="card-content">
+                <span class="card-title">Regular Exercise</span>
+                <p>Regular physical activity can improve your muscle strength and boost your endurance.</p>
+            </div>
+            </div>
+        </div>
+        <!-- Health Tip 3 -->
+        <div class="col s12 m4">
+            <div class="card">
+            <div class="card-image">
+                <img src="{% static 'images/diet.png' %}" alt="Health Tip">
+            </div>
+            <div class="card-content">
+                <span class="card-title">Balanced Diet</span>
+                <p>A balanced diet is crucial for a healthy body and mind. Eat plenty of fruits, vegetables, whole grains, and lean proteins.</p>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+{% endblock content %}
+
+{% block extra_js %}
+  <script>
+    // Initialize Parallax
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.parallax');
+      var instances = M.Parallax.init(elems);
+    });
+  </script>
+{% endblock %}
