@@ -1,0 +1,85 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+
+<div class="medical-record-pdf">
+    <h3 class="center-align">Medical Record</h3>
+    <div class="section">
+        <h5>Patient Information</h5>
+        <p><strong>Name:</strong> {{ medical_record.patient.user.get_full_name }}</p>
+        <p><strong>Record Number:</strong> {{ medical_record.record_number }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Medical History</h5>
+        <p>{{ medical_record.medical_history }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Current Medications</h5>
+        <p>{{ medical_record.current_medications }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Surgical History</h5>
+        <p>{{ medical_record.surgical_history }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Family Medical History</h5>
+        <p>{{ medical_record.family_history }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Immunization Records</h5>
+        <p>{{ medical_record.immunizations }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Social History</h5>
+        <p>{{ medical_record.social_history }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Chronic Conditions</h5>
+        <p>{{ medical_record.chronic_conditions }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Detailed Allergies</h5>
+        <p>{{ medical_record.detailed_allergies }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Vital Signs</h5>
+        <p>{{ medical_record.vital_signs }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Advanced Directives</h5>
+        <p>{{ medical_record.advanced_directives }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Laboratory Results</h5>
+        <p>{{ medical_record.lab_results }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Radiology Reports</h5>
+        <p>{{ medical_record.radiology_reports }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Provider Notes</h5>
+        <p>{{ medical_record.provider_notes }}</p>
+    </div>
+
+    <div class="section">
+        <h5>Audit Information</h5>
+        <p><strong>Created At:</strong> {{ medical_record.created_at|date:"D, d M Y H:i:s" }}</p>
+        <p><strong>Last Updated:</strong> {{ medical_record.updated_at|date:"D, d M Y H:i:s" }}</p>
+    </div>
+</div>
+
+{% endblock %}

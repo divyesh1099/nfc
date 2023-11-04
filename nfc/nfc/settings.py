@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'consultation',
     'user',
     'home',
+    'medical_record',
     'patient',
 ]
 

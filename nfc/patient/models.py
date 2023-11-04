@@ -2,9 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 
 class Patient(models.Model):
     # Basic details
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(_("First Name"), max_length=30)
     last_name = models.CharField(_("Last Name"), max_length=30)
     date_of_birth = models.DateField(_("Date of Birth"))

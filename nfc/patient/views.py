@@ -1,8 +1,13 @@
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
+from .models import *
 # Create your views here.
-def index(request):
-    return render(request, 'patient/index.html')
 
-def view_medical_records(request):
-    return render(request, 'patient/view_medical_records.html')
+@login_required
+def index(request):
+    patient_profile = Patient.objects.get(user=request.user)
+    patient_id = patient_profile.id
+    context={
+        'patient_id': patient_id,
+    }
+    return render(request, 'patient/index.html', context)
