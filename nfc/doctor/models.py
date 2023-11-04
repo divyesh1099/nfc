@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -25,6 +26,7 @@ class Doctor(models.Model):
     Inherits from AbstractUser to utilize built-in authentication mechanisms.
     """
     # Basic Information
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     photo = models.ImageField(upload_to='doctors/photos/', null=True, blank=True)
     phone_number = PhoneNumberField(unique=True, help_text=_('Contact phone number'))
     bio = models.TextField(_('biography'), blank=True)
@@ -50,7 +52,8 @@ class Doctor(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.get_full_name()} - {self.speciality}"
+        speciality_name = self.speciality.name if self.speciality else "No Speciality"
+        return f"{self.user.get_full_name()} - {speciality_name}"
 
     def get_absolute_url(self):
         from django.urls import reverse

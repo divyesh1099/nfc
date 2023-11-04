@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'phonenumbers',
     'appointment',
     'consultation',
-    'user',
+    'doctor',
     'home',
     'medical_record',
     'patient',

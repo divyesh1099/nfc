@@ -1,0 +1,99 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+<div class="container">
+    <!-- Dashboard Header -->
+    <div class="row">
+        <div class="col s12">
+            <h1 class="header">Doctor's Dashboard</h1>
+        </div>
+    </div>
+
+    <!-- Summary Statistics Cards -->
+    <div class="row">
+        <!-- Replace with for-loop and context data from your Django view -->
+        <div class="col s12 m6 l4">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">Appointments Today</span>
+                    <p>You have {% if number_of_appointments == 0 %} no appointments {% elif number_of_appointments == 1 %} 1 appointment {% else %} {{ number_of_appointments }} appointments {% endif %} scheduled for today.</p>
+                </div>
+                <div class="card-action">
+                    <a href="{% url 'appointment:index' %}">View Appointments</a>
+                </div>
+            </div>
+        </div>
+        <!-- More cards... -->
+    </div>
+
+    <!-- Upcoming Appointments -->
+    <div class="row">
+        <div class="col s12">
+            <h2>Upcoming Appointments</h2>
+            <!-- Appointment List/Calendar -->
+            <table class="highlight">
+                <!-- Replace with dynamic content -->
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Time</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through appointments using Django template language -->
+                    {% for appointment in appointments_today %}
+                    <tr>
+                        <td>{{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</td>
+                        <td>{{ appointment.time }}</td> <!-- Format this as needed -->
+                        <td>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Start
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3">No appointments scheduled for today.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Tasks/Reminders -->
+    <div class="row">
+        <div class="col s12">
+            <h2>Tasks & Reminders</h2>
+            <!-- Tasks List -->
+            <!-- Replace with dynamic content -->
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>Today's Tasks</h4></li>
+                <li class="collection-item">Review patient case notes</li>
+                <!-- More tasks... -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hospital News/Updates -->
+    <!-- Replace with dynamic content if needed -->
+    <div class="row">
+        <div class="col s12">
+            <h2>Hospital News</h2>
+            <p>Check out the latest updates and news about the hospital.</p>
+            <!-- News content... -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- Initialize Materialize components -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Any initialization of Materialize components goes here
+    });
+</script>
+{% endblock %}

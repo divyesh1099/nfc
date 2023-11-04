@@ -1,0 +1,76 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+<div class="container">
+    <!-- Dashboard Header -->
+    <h1 class="header center-align">{{ user.get_full_name }}'s Dashboard</h1>
+    
+    <!-- Conditionally Display Appointments -->
+    {% if is_doctor %}
+        <h2 class="header">Your Appointments</h2>
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in doctor_appointments %}
+                    <tr>
+                        <td>{{ appointment.patient.first_name }} {{ appointment.patient.last_name }}</td>
+                        <td>{{ appointment.date|date:"N j, Y" }}</td>
+                        <td>{{ appointment.time|date:"P" }}</td>
+                        <td>{{ appointment.get_status_display }}</td>
+                        <td>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Start
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="center-align">No appointments scheduled.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    {% if is_patient %}
+        <h2 class="header">Your Appointments</h2>
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Speciality</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in patient_appointments %}
+                    <tr>
+                        <td>{{ appointment.doctor.user.first_name }} {{ appointment.doctor.user.last_name }}</td>
+                        <td>{{ appointment.doctor.speciality.name }}</td>
+                        <td>{{ appointment.date|date:"N j, Y" }}</td>
+                        <td>{{ appointment.time|date:"P" }}</td>
+                        <td>{{ appointment.get_status_display }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="center-align">You have no upcoming appointments.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <!-- If the user is neither a doctor nor a patient, you can display a default message or redirect as appropriate -->
+        <p class="center-align">Please log in to view your appointments.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
