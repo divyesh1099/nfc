@@ -49,17 +49,28 @@
                     <th>Date</th>
                     <th>Time</th>
                     <th>Status</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for appointment in patient_appointments %}
-                    <tr>
+                    {% with status=appointment.get_status_display %}    
+                    <tr class="{% if status == 'Completed' %}status-completed{% elif status == 'Rescheduled' %}status-rescheduled{% elif status == 'Cancelled' %}status-cancelled{% endif %}">
                         <td>{{ appointment.doctor.user.first_name }} {{ appointment.doctor.user.last_name }}</td>
                         <td>{{ appointment.doctor.speciality.name }}</td>
                         <td>{{ appointment.date|date:"N j, Y" }}</td>
                         <td>{{ appointment.time|date:"P" }}</td>
                         <td>{{ appointment.get_status_display }}</td>
+                        <td>
+                            <a href="{% url 'appointment:appointment_update' appointment.id %}" class="btn-floating btn-small waves-effect waves-light teal">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a href="#cancel-appointment-modal" class="btn-floating btn-small waves-effect waves-light red modal-trigger" data-appointment-id="{{ appointment.id }}">
+                                <i class="material-icons">close</i>
+                            </a>
+                        </td>
                     </tr>
+                    {% endwith %}
                 {% empty %}
                     <tr>
                         <td colspan="5" class="center-align">You have no upcoming appointments.</td>
@@ -72,5 +83,34 @@
         <p class="center-align">Please log in to view your appointments.</p>
     {% endif %}
 </div>
+<!-- Cancel Appointment Modal Structure -->
+<div id="cancel-appointment-modal" class="modal">
+    <div class="modal-content">
+        <h4>Cancel Appointment</h4>
+        <p>Are you sure you want to cancel this appointment?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">No, Keep It</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat" id="confirm-cancel">Yes, Cancel It</a>
+    </div>
+</div>
+{% endblock %}
 
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+
+        // Trigger for cancel appointment modal
+        var cancelButtons = document.querySelectorAll('.modal-trigger');
+        cancelButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var appointmentId = btn.getAttribute('data-appointment-id');
+                var confirmCancelBtn = document.getElementById('confirm-cancel');
+                confirmCancelBtn.href = "{% url 'appointment:appointment_cancel' %}?id=" + appointmentId; // Assuming you are sending ID as a GET parameter
+            });
+        });
+    });
+</script>
 {% endblock %}

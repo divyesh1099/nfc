@@ -87,3 +87,15 @@ nav .active {
         padding: 0 15px; /* Adjust padding on smaller screens */
     }
 }
+
+.status-completed {
+    background-color: #4CAF50; /* Green */
+}
+
+.status-rescheduled {
+    background-color: #FFEB3B; /* Yellow */
+}
+
+.status-cancelled {
+    background-color: #F44336; /* Red */
+}

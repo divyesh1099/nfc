@@ -1,0 +1,79 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h4 class="teal-text text-darken-3 center-align">Edit Appointment</h4>
+    <form action="{% url 'appointment:appointment_update' appointment.pk %}" method="post" class="section">
+        {% csrf_token %}
+        <div class="card-panel hoverable">
+            <div class="row">
+                <div class="input-field col s12">
+                    <select id="doctor_select" name="doctor" required>
+                        <option value="" disabled>Choose your doctor</option>
+                        {% for doctor in doctors %}
+                            <option value="{{ doctor.pk }}" {% if appointment.doctor.pk == doctor.pk %}selected{% endif %}>
+                                {{ doctor.user.first_name }} {{ doctor.user.last_name }} - {{ doctor.speciality }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <label for="doctor_select">Doctor</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="date" type="text" class="datepicker" name="date" value="{{ appointment.date|date:"Y-m-d" }}" required>
+                    <label for="date">Date</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="time" type="text" class="timepicker" name="time" value="{{ appointment.time|time:"H:i" }}" required>
+                    <label for="time">Time</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="notes" class="materialize-textarea" name="notes" required>{{ appointment.notes }}</textarea>
+                    <label for="notes">Reason for visit</label>
+                </div>
+            </div>
+
+            <div class="row center-align">
+                <button class="btn-large waves-effect waves-light teal darken-3" type="submit" name="action">
+                    Update
+                    <i class="material-icons right">check_circle</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+
+        var dateElems = document.querySelectorAll('.datepicker');
+        var dateInstances = M.Datepicker.init(dateElems, {
+            format: 'yyyy-mm-dd', // Change format if needed
+            container: 'body', // Avoids issues with modals
+            defaultDate: new Date('{{ appointment.date|date:"Y-m-d" }}'),
+            setDefaultDate: true
+        });
+
+        var timeElems = document.querySelectorAll('.timepicker');
+        var timeInstances = M.Timepicker.init(timeElems, {
+            twelveHour: false, // Use 24-hour format
+            container: 'body', // Avoids issues with modals
+            defaultTime: '{{ appointment.time|time:"H:i" }}'
+        });
+
+        // Update labels and activate fields with pre-filled values
+        M.updateTextFields();
+        var textareas = document.querySelectorAll('textarea');
+        M.textareaAutoResize(textareas);
+    });
+</script>
+{% endblock %}
